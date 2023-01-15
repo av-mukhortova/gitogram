@@ -1,0 +1,46 @@
+[
+  {
+    "id": "0",
+    "username": "joshua_l",
+    "avatar": "andrew.png",
+    "title": "Vue.js",
+    "content": "<b>JavaScript</b> framework for building interactive web applications ⚡",
+    "stars": "156k",
+    "forks": "4",
+    "comments": [
+      {
+        "id": "0",
+        "username": "joshua_l",
+        "content": "Enable performance measuring in production, at the user's request"
+      },
+      {
+        "id": "1",
+        "username": "Camille",
+        "content": "It's Impossible to Rename an Inherited Slot"
+      },
+      {
+        "id": "2",
+        "username": "Marselle",
+        "content": "transition-group with flex parent causes removed items to fly"
+      }
+    ],
+    "date": "15 may"
+  },
+  {
+    "id": "1",
+    "username": "Camille",
+    "avatar": "camille.png",
+    "title": "React.js",
+    "content": "<b>Open source</b> JavaScript library used for designing user interfaces",
+    "stars": "156k",
+    "forks": "4",
+    "comments": [
+      {
+        "id": "0",
+        "username": "joshua_l",
+        "content": "Blah blah blah"
+      }
+    ],
+    "date": "15 may"
+  }
+]

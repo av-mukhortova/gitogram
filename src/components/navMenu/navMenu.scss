@@ -1,0 +1,20 @@
+.c-menu {
+  display: flex;
+  justify-content: space-between;
+  width: 145px;
+  align-items: center;
+
+  .home {
+    width: 24px;
+    height: 25.14px;
+  }
+  
+  .profile {
+    width: 37px;
+  }
+  
+  .logout {
+    width: 25px;
+    height: 20.5px;
+  }
+}

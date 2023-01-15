@@ -1,0 +1,20 @@
+.button {
+  display: inline-flex;
+  align-items: center;
+  padding: 0;
+
+  .icon {
+    width: 10px;
+    transform: rotate(180deg);
+    transition: 0.3s;
+  }
+
+  &.active {
+    .icon {
+      transform: rotate(0deg);
+    }
+  }
+}
+.text {
+  margin-right: 5px;
+}

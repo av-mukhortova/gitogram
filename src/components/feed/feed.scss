@@ -1,0 +1,36 @@
+.feed {
+  &__date {
+    margin-top: 10px;
+
+    span {
+      font-size: 12px;
+      line-height: 14px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;  
+      color: rgba(0, 0, 0, 0.4);
+    }
+  }
+  &__author {
+    display: flex;
+    align-items: center;
+
+    span {
+      display: block;
+      margin-left: 14px;
+      font-size: 18px;
+      font-weight: 700;
+    }
+  }
+  &__content {
+    margin-top: 16px;
+    margin-bottom: 18px;
+  }
+}
+.comments {
+  font-weight: 500;
+  margin-top: 10px;
+  &__item {
+    margin-top: 6px;
+    line-height: 22px;
+  }
+}
