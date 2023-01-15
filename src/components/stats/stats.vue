@@ -47,6 +47,7 @@ export default {
     display: flex;
     align-items: center;
     padding: 5px 10px;
+    box-shadow: inset 0px -1px 0px rgba(27, 31, 35, 0.12), inset 0px 1px 0px rgba(27, 31, 35, 0.12);
   }
   &__name {
     background: #fafbfc;
@@ -67,6 +68,7 @@ export default {
   }
   &__fork {
     font-size: 12px;
+    font-weight: 600;
   }
 }
 </style>
