@@ -17,6 +17,7 @@ import { icon } from '../../icons';
 
 export default {
   name: 'NavMenu',
+  emits: ['onPressHome', 'onPressProfile', 'onPressLogout'],
   components: { icon },
 };
 </script>

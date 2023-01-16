@@ -2,24 +2,18 @@ module.exports = {
   env: {
     browser: true,
     es2021: true,
-    node: true,
+    node: true
   },
-  extends: [
-    'plugin:vue/vue3-essential',
-    'airbnb-base',
-  ],
-  overrides: [
-  ],
+  extends: ['plugin:vue/vue3-essential', 'airbnb-base', 'plugin:storybook/recommended'],
+  overrides: [],
   parserOptions: {
     ecmaVersion: 12,
-    sourceType: 'module',
+    sourceType: 'module'
   },
-  plugins: [
-    'vue',
-  ],
+  plugins: ['vue'],
   rules: {
     'linebreak-style': 0,
     'import/prefer-default-export': 'off',
-    'vue/multi-word-component-names': 'off',
-  },
+    'vue/multi-word-component-names': 'off'
+  }
 };

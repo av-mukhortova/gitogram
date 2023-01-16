@@ -15,6 +15,7 @@ import { icon } from '../../icons';
 
 export default {
   name: 'Toggler',
+  emits: ['onToggle'],
   components: { icon },
   data() {
     return {

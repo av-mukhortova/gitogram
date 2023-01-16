@@ -11,6 +11,7 @@
 
 export default {
   name: 'UserStory',
+  emits: ['onPress'],
   props: {
     avatar: {
       type: String,
