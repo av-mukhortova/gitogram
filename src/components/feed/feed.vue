@@ -46,8 +46,8 @@ export default {
     };
   },
   methods: {
-    toggle(isOpened) {
-      this.shown = isOpened;
+    toggle(mode) {
+      this.shown = mode.isOpen;
     },
   },
 };

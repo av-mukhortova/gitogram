@@ -25,7 +25,7 @@ export default {
   methods: {
     toggle() {
       this.isOpened = !this.isOpened;
-      this.$emit('onToggle', this.isOpened);
+      this.$emit('onToggle', { isOpen: this.isOpened });
     },
   },
 };
