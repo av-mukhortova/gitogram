@@ -56,3 +56,17 @@ button {
   width: 1200px;
   margin: 0 auto;
 }
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #afafaf #ffffff;
+}
+
+*::-webkit-scrollbar {
+  width: 5px;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #afafaf;
+  border-radius: 20px;
+}

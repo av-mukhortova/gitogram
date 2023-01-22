@@ -1,31 +1,29 @@
-import { text, withKnobs } from '@storybook/addon-knobs';
 import card from './card.vue';
 
 export default {
   title: 'Card',
   components: { card },
-  decorators: [withKnobs],
+  argTypes: {
+    title: 'Vue.js',
+    desc: 'JavaScript framework for building interactive web applications',
+    stars: '156k',
+    forks: '4',
+  },
 };
 
-export const DefaultView = () => ({
+const Template = (args) => ({
   components: { card },
-  props: {
-    title: {
-      default: text('Title', 'Vue.js'),
-    },
-    desc: {
-      default: text('Description', 'JavaScript framework for building interactive web applications'),
-    },
-    stars: {
-      default: text('Star', '156k'),
-    },
-    forks: {
-      default: text('Fork', '4'),
-    },
+  data() {
+    return { args };
   },
-  template: '<card :title="title" :desc="desc" :stars="stars" :forks="forks"/>',
+  template: '<card v-bind="args"/>',
 });
 
-DefaultView.story = {
-  name: 'Стандартный вид',
+export const Card = Template.bind({});
+
+Card.args = {
+  title: 'Vue.js',
+  desc: 'JavaScript framework for building interactive web applications',
+  stars: '156k',
+  forks: '4',
 };

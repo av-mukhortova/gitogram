@@ -8,11 +8,20 @@ module.exports = {
     "@storybook/addon-essentials",
     "@storybook/addon-links",
     "@storybook/addon-interactions",
-    "@storybook/preset-scss",
-    "@storybook/addon-knobs"
   ],
   framework: "@storybook/vue3",
   core: {
     builder: "@storybook/builder-webpack5"
   },
+  webpackFinal: config => {
+    config.module.rules.push({
+      test: /.scss$/i,
+      use: [
+        "style-loader",
+        "css-loader",
+        "sass-loader"
+      ]
+    })
+    return config;
+  }
 }

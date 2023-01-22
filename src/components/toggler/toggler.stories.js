@@ -1,21 +1,21 @@
-import { action } from '@storybook/addon-actions';
 import toggler from './toggler.vue';
-
-const methods = {
-  onToggle: action('toggle'),
-};
 
 export default {
   title: 'Toggler',
   component: toggler,
+  argTypes: {
+    onToggle: {
+      action: 'onToggle',
+    },
+  },
 };
 
-export const DefaultView = () => ({
+const Template = (args) => ({
   components: { toggler },
-  template: '<toggler @onToggle="onToggle"></toggler>',
-  methods,
+  data() {
+    return { args };
+  },
+  template: '<toggler @onToggle="args.onToggle"></toggler>',
 });
 
-DefaultView.story = {
-  name: 'Стандартный вид',
-};
+export const Toggler = Template.bind({});

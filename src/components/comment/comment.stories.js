@@ -1,25 +1,25 @@
-import { text, withKnobs } from '@storybook/addon-knobs';
 import comment from './comment.vue';
 
 export default {
   title: 'Comment',
   components: { comment },
-  decorators: [withKnobs],
+  argTypes: {
+    text: 'Enable performance measuring in production, at the user\'s request',
+    username: 'joshua_l',
+  },
 };
 
-export const DefaultView = () => ({
+const Template = (args) => ({
   components: { comment },
-  props: {
-    text: {
-      default: text('Text', 'Some text'),
-    },
-    username: {
-      default: text('Username', 'Some name'),
-    },
+  data() {
+    return { args };
   },
-  template: '<comment :text="text" :username="username" />',
+  template: '<comment v-bind="args" />',
 });
 
-DefaultView.story = {
-  name: 'Стандартный вид',
+export const Comment = Template.bind({});
+
+Comment.args = {
+  text: 'Enable performance measuring in production, at the user\'s request',
+  username: 'joshua_l',
 };

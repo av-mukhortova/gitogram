@@ -1,22 +1,28 @@
-import { text, withKnobs } from '@storybook/addon-knobs';
 import userStory from './userStory.vue';
 
 export default {
   title: 'UserStory',
   components: { userStory },
-  decorators: [withKnobs],
-};
-
-export const DefaultView = () => ({
-  components: { userStory },
-  props: {
-    username: {
-      default: text('Username', 'Some name'),
+  argTypes: {
+    username: 'Andrew',
+    avatar: {
+      options: ['andrew.png', 'camille.png', 'can.png', 'diself.png', 'josh.png'],
+      control: { type: 'select' },
     },
   },
-  template: '<userStory avatar="andrew.png" :username="username" />',
+};
+
+const Template = (args) => ({
+  components: { userStory },
+  data() {
+    return { args };
+  },
+  template: '<userStory v-bind="args" />',
 });
 
-DefaultView.story = {
-  name: 'Стандартный вид',
+export const UserStory = Template.bind({});
+
+UserStory.args = {
+  avatar: 'andrew.png',
+  username: 'Andrew',
 };

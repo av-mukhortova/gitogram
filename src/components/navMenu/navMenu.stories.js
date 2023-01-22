@@ -1,23 +1,27 @@
-import { action } from '@storybook/addon-actions';
 import navMenu from './navMenu.vue';
-
-const methods = {
-  onPressHome: action('click on home button'),
-  onPressProfile: action('click on profile button'),
-  onPressLogout: action('click on logout button'),
-};
 
 export default {
   title: 'NavMenu',
   components: { navMenu },
+  argTypes: {
+    onPressHome: {
+      action: 'onPressHome',
+    },
+    onPressProfile: {
+      action: 'onPressProfile',
+    },
+    onPressLogout: {
+      action: 'onPressLogout',
+    },
+  },
 };
 
-export const DefaultView = () => ({
+const Template = (args) => ({
   components: { navMenu },
-  template: '<navMenu @onPressHome="onPressHome" @onPressProfile="onPressProfile" @onPressLogout="onPressLogout" />',
-  methods,
+  data() {
+    return { args };
+  },
+  template: '<navMenu @onPressHome="args.onPressHome" @onPressProfile="args.onPressProfile" @onPressLogout="args.onPressLogout" />',
 });
 
-DefaultView.story = {
-  name: 'Стандартный вид',
-};
+export const NavMenu = Template.bind({});

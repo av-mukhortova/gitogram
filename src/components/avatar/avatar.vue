@@ -1,6 +1,6 @@
 <template>
   <div class="avatar" :style="avatarStyle">
-    <img :src="require(`../../assets/${avatar}`)" alt="user avatar" />
+    <img v-show="avatar" :src="avatar" alt="user avatar" />
   </div>
 </template>
 
@@ -10,7 +10,7 @@ export default {
   props: {
     avatar: {
       type: String,
-      required: true,
+      default: '',
     },
     size: {
       type: String,
@@ -19,6 +19,10 @@ export default {
   },
   setup(props) {
     const style = {
+      xs: {
+        width: '32px',
+        height: '32px',
+      },
       s: {
         width: '44px',
         height: '44px',
@@ -41,5 +45,6 @@ export default {
 .avatar img {
   width: 100%;
   height: 100%;
+  border-radius: 100px;
 }
 </style>

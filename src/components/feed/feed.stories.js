@@ -1,42 +1,53 @@
-import { text, array, withKnobs } from '@storybook/addon-knobs';
 import feed from './feed.vue';
+import card from '../card/card.vue';
 
 export default {
   title: 'Feed',
   components: { feed },
-  decorators: [withKnobs],
+  subComponents: { card },
+  argTypes: {
+    username: 'Andrew',
+    avatar: 'https://i.ibb.co/bvmSwqm/piter.png',
+    title: 'Vue.js',
+    desc: 'JavaScript framework for building interactive web applications',
+    stars: '156k',
+    forks: '4',
+    author1: 'Author 1',
+    comment1: 'Some comment 1',
+    author2: 'Author 2',
+    comment2: 'Some comment 2',
+  },
 };
 
-export const DefaultView = () => ({
-  components: { feed },
-  props: {
-    username: {
-      default: text('Username', 'Andrew'),
-    },
-    author1: {
-      default: text('Author 1', 'Author 1'),
-    },
-    comment1: {
-      default: text('Comment 1', 'Some comment 1'),
-    },
-    author2: {
-      default: text('Author 2', 'Author 2'),
-    },
-    comment2: {
-      default: text('Comment 2', 'Some comment 1'),
-    },
-  },
+const Template = (args) => ({
+  components: { feed, card },
   data() {
     return {
-      comments: [{ id: '0', username: this.author1, content: this.comment1 },
-        { id: '1', username: this.author2, content: this.comment2 }],
+      args,
+      comments: [
+        { id: '0', username: args.author1, content: args.comment1 },
+        { id: '1', username: args.author2, content: args.comment2 },
+      ],
     };
   },
-  template: `<feed :feed="{avatar: 'andrew.png', username: username, comments: comments}">
-               <template #feedContent>Содержимое блока новостей</template>
+  template: `<feed :feed="{avatar: args.avatar, username: args.username, comments: comments}">
+               <template #feedContent>
+                 <card v-bind="args"/>
+               </template>
              </feed>`,
 });
 
-DefaultView.story = {
-  name: 'Стандартный вид',
+export const Feed = Template.bind({});
+
+Feed.args = {
+  username: 'Andrew',
+  avatar: 'https://i.ibb.co/bvmSwqm/piter.png',
+  title: 'Vue.js',
+  desc: 'JavaScript framework for building interactive web applications',
+  stars: '156k',
+  forks: '4',
+  author1: 'Author 1',
+  comment1: 'Some comment 1',
+  author2: 'Author 2',
+  comment2: 'Some comment 2',
 };

@@ -2,32 +2,27 @@ import avatar from './avatar.vue';
 
 export default {
   title: 'Avatar',
-  components: { avatar },
+  component: avatar,
+  argTypes: {
+    size: {
+      options: ['xs', 's', 'm', 'l'],
+      control: { type: 'radio' },
+    },
+    avatar: 'https://i.ibb.co/bvmSwqm/piter.png',
+  },
 };
 
-export const SmallSize = () => ({
+const Template = (args) => ({
   components: { avatar },
-  template: '<avatar avatar="andrew.png" size="s"/>',
+  data() {
+    return { args };
+  },
+  template: '<avatar v-bind="args"/>',
 });
 
-SmallSize.story = {
-  name: 'Маленький размер',
-};
+export const Avatar = Template.bind({});
 
-export const MediumSize = () => ({
-  components: { avatar },
-  template: '<avatar avatar="andrew.png" size="m"/>',
-});
-
-MediumSize.story = {
-  name: 'Средний размер',
-};
-
-export const LargeSize = () => ({
-  components: { avatar },
-  template: '<avatar avatar="andrew.png" size="l"/>',
-});
-
-LargeSize.story = {
-  name: 'Большой размер',
+Avatar.args = {
+  size: 's',
+  avatar: 'https://i.ibb.co/bvmSwqm/piter.png',
 };

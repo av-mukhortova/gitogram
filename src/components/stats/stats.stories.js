@@ -1,25 +1,25 @@
-import { text, withKnobs } from '@storybook/addon-knobs';
 import stats from './stats.vue';
 
 export default {
   title: 'Stats',
   components: { stats },
-  decorators: [withKnobs],
+  argTypes: {
+    stars: '156k',
+    forks: '4',
+  },
 };
 
-export const DefaultView = () => ({
+const Template = (args) => ({
   components: { stats },
-  props: {
-    stars: {
-      default: text('Star', '156k'),
-    },
-    forks: {
-      default: text('Fork', '4'),
-    },
+  data() {
+    return { args };
   },
-  template: '<stats :stars="stars" :forks="forks"/>',
+  template: '<stats v-bind="args"/>',
 });
 
-DefaultView.story = {
-  name: 'Стандартный вид',
+export const Stats = Template.bind({});
+
+Stats.args = {
+  stars: '156k',
+  forks: '4',
 };

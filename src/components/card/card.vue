@@ -26,15 +26,15 @@ export default {
     },
     desc: {
       type: String,
-      required: true,
+      default: '',
     },
     stars: {
       type: [Number, String],
-      required: true,
+      default: 0,
     },
     forks: {
       type: [Number, String],
-      required: true,
+      default: 0,
     },
   },
 };

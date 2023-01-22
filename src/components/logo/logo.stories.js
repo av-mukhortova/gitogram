@@ -5,11 +5,9 @@ export default {
   components: { logo },
 };
 
-export const DefaultView = () => ({
+const Template = () => ({
   components: { logo },
   template: '<div style="width: 174px;cursor: pointer;"><logo /></div>',
 });
 
-DefaultView.story = {
-  name: 'Стандартный вид',
-};
+export const Logo = Template.bind({});

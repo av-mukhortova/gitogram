@@ -23,9 +23,14 @@
   <div class="newsline">
     <ul class="feeds">
       <li class="feeds-item" v-for="feed in feeds" :key="feed.id">
-        <feed :feed="feed">
+        <feed :feed="getFeedData(feed)">
           <template #feedContent>
-            <card :title="feed.title" :desc="feed.content" :stars="feed.stars" :forks="feed.forks"/>
+            <card
+              :title="feed.name"
+              :desc="feed.description"
+              :stars="feed.stargazers_count"
+              :forks="feed.forks_count"
+            />
           </template>
         </feed>
       </li>
@@ -40,8 +45,9 @@ import stories from './data.json';
 import { logo } from '../../components/logo';
 import { navMenu } from '../../components/navMenu';
 import { feed } from '../../components/feed';
-import feeds from './feeds.json';
+// import feeds from './feeds.json';
 import { card } from '../../components/card';
+import * as api from '../../api';
 
 export default {
   name: 'Feeds',
@@ -56,8 +62,29 @@ export default {
   data() {
     return {
       stories,
-      feeds,
+      feeds: [],
     };
+  },
+  methods: {
+    getFeedData(item) {
+      return {
+        title: item.name,
+        desc: item.description,
+        username: item.owner.login,
+        stars: item.stargazers_count,
+        forks: item.forks_count,
+        avatar: item.owner.avatar_url,
+        comments: [],
+      };
+    },
+  },
+  async created() {
+    try {
+      const { data } = await api.trandings.getTrendings();
+      this.feeds = data.items;
+    } catch (error) {
+      // console.log(error);
+    }
   },
 };
 </script>
