@@ -9,7 +9,7 @@
 import { avatar } from '../avatar';
 
 export default {
-  name: 'Slider',
+  name: 'User',
   components: { avatar },
   props: {
     avatar: {

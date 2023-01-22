@@ -1,8 +1,8 @@
-import slider from './slider.vue';
+import slide from './slide.vue';
 
 export default {
-  title: 'Slider',
-  component: slider,
+  title: 'Slide',
+  component: slide,
   argTypes: {
     avatar: 'https://i.ibb.co/bvmSwqm/piter.png',
     title: 'React.reposit',
@@ -19,11 +19,11 @@ export default {
 };
 
 const Template = (args) => ({
-  components: { slider },
+  components: { slide },
   data() {
     return { args };
   },
-  template: `<slider v-bind="args">
+  template: `<slide v-bind="args">
                <p style="margin-bottom:14px">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras in nibh rhoncus, sagittis sem semper, egestas lectus. 
                Sed dignissim metus massa, ut ornare ex efficitur at. Duis leo tellus, blandit eget orci non, fermentum blandit lacus. 
                Vivamus tempus porttitor pretium. Maecenas maximus non metus non facilisis. Proin in volutpat libero. 
@@ -47,12 +47,12 @@ const Template = (args) => ({
                Praesent porta sollicitudin lacinia. Proin aliquam eros ipsum, eget accumsan metus commodo et. Nulla porta tempor imperdiet. 
                Vestibulum sagittis interdum nunc, vitae blandit sem vehicula at. Integer luctus vestibulum varius. Suspendisse aliquam mollis consequat. 
                Cras sit amet nunc nec diam facilisis gravida. Proin vitae ante egestas, interdum lectus in, volutpat arcu. Sed egestas lacinia libero, luctus imperdiet tellus.</p>
-             </slider>`,
+             </slide>`,
 });
 
-export const Slider = Template.bind({});
+export const Slide = Template.bind({});
 
-Slider.args = {
+Slide.args = {
   avatar: 'https://i.ibb.co/bvmSwqm/piter.png',
   title: 'React.reposit',
 };

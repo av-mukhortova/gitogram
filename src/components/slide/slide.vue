@@ -1,16 +1,16 @@
 <template>
-  <div class="c-slider">
-    <div class="c-slider__header">
+  <div class="c-slide">
+    <div class="c-slide__header">
       <x-progress />
-      <div class="c-slider__owner">
+      <div class="c-slide__owner">
         <user :avatar="avatar" size="xs" :username="title"/>
       </div>
     </div>
-    <div class="c-slider__content">
+    <div class="c-slide__content">
       <slot></slot>
     </div>
-    <div class="c-slider__footer">
-      <div class="c-slider__btn">
+    <div class="c-slide__footer">
+      <div class="c-slide__btn">
         <x-button hover-text="Unfollow">Follow</x-button>
       </div>
     </div>
@@ -23,7 +23,7 @@ import { button as xButton } from '../button';
 import { user } from '../user';
 
 export default {
-  name: 'Slider',
+  name: 'Slide',
   components: { xProgress, xButton, user },
   props: {
     avatar: {
@@ -37,4 +37,4 @@ export default {
   },
 };
 </script>
-<style lang="scss" scoped src="./slider.scss"></style>
+<style lang="scss" scoped src="./slide.scss"></style>
