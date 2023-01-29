@@ -8,24 +8,18 @@
 export default {
   name: 'ProgressBar',
   emits: ['onFinish'],
-  data() {
-    return {
-      active: false,
-    };
+  props: {
+    active: {
+      type: Boolean,
+      default: false,
+    },
   },
   methods: {
     emitOnFinish() {
-      this.$emit('onFinish');
+      if (this.active === true) this.$emit('onFinish');
     },
   },
   mounted() {
-    /* с nextTick полоса сразу зеленая, анимации нет =( */
-    /* this.$nextTick(() => {
-      this.active = true;
-    }); */
-    setTimeout(() => {
-      this.active = true;
-    }, 0);
     this.$refs.indicator.addEventListener('transitionend', this.emitOnFinish);
   },
   beforeUnmount() {

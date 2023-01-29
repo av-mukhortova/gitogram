@@ -2,7 +2,6 @@ import topline from './topline.vue';
 import logo from '../logo/logo.vue';
 import navMenu from '../navMenu/navMenu.vue';
 import userStory from '../userStory/userStory.vue';
-import stories from '../../pages/feeds/data.json';
 
 export default {
   title: 'Topline',
@@ -18,7 +17,7 @@ const Template = (args) => ({
     userStory,
   },
   data() {
-    return { args, stories };
+    return { args };
   },
   template: `<topline>
               <template #headline>
@@ -33,8 +32,8 @@ const Template = (args) => ({
               </template>
               <template #content>
                 <ul style="display: flex;justify-content: space-between;margin-top: 43.5px;padding-bottom: 37px;">
-                  <li v-for="story in stories" :key="story.id">
-                    <userStory :avatar="story.avatar" :username="story.username" />
+                  <li v-for="n in 10" :key="n">
+                    <userStory avatar="https://i.ibb.co/bvmSwqm/piter.png" username="Josh" />
                   </li>
                 </ul>
               </template>

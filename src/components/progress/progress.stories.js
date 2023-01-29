@@ -4,6 +4,7 @@ export default {
   title: 'Progress',
   component: progress,
   argTypes: {
+    active: false,
     onFinish: {
       action: 'onFinish',
       description: 'fires when progress reaches the end',
@@ -16,7 +17,11 @@ const Template = (args) => ({
   data() {
     return { args };
   },
-  template: '<x-progress @onFinish="args.onFinish"/>',
+  template: '<x-progress :active="args.active" @onFinish="args.onFinish"/>',
 });
 
 export const Progress = Template.bind({});
+
+Progress.args = {
+  active: true,
+};

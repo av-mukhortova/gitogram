@@ -13,8 +13,18 @@
       </template>
       <template #content>
         <ul class="stories">
-          <li class="stories-item" v-for="story in stories" :key="story.id">
-            <userStory :avatar="story.avatar" :username="story.username" />
+          <li
+            class="stories-item"
+            v-for="feed in feeds"
+            :key="feed.id"
+          >
+            <userStory
+              :avatar="feed.owner.avatar_url"
+              :username="feed.owner.login.length > 18 ?
+              `${feed.owner.login.substring(1,15)}...` :
+              feed.owner.login"
+              @onPress="$router.push({name: 'stories', params: {initialSlide: feed.id}})"
+            />
           </li>
         </ul>
       </template>
@@ -39,15 +49,13 @@
 </template>
 
 <script>
+import { mapState, mapActions } from 'vuex';
 import { topline } from '../../components/topline';
 import { userStory } from '../../components/userStory';
-import stories from './data.json';
 import { logo } from '../../components/logo';
 import { navMenu } from '../../components/navMenu';
 import { feed } from '../../components/feed';
-// import feeds from './feeds.json';
 import { card } from '../../components/card';
-import * as api from '../../api';
 
 export default {
   name: 'Feeds',
@@ -59,13 +67,15 @@ export default {
     feed,
     card,
   },
-  data() {
-    return {
-      stories,
-      feeds: [],
-    };
+  computed: {
+    ...mapState({
+      feeds: (state) => state.trendings.data,
+    }),
   },
   methods: {
+    ...mapActions({
+      fetchTrendings: 'trendings/fetchTrendings',
+    }),
     getFeedData(item) {
       return {
         title: item.name,
@@ -79,12 +89,7 @@ export default {
     },
   },
   async created() {
-    try {
-      const { data } = await api.trandings.getTrendings();
-      this.feeds = data.items;
-    } catch (error) {
-      // console.log(error);
-    }
+    this.fetchTrendings();
   },
 };
 </script>

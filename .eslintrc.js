@@ -15,5 +15,6 @@ module.exports = {
     'linebreak-style': 0,
     'import/prefer-default-export': 'off',
     'vue/multi-word-component-names': 'off',
+    'no-param-reassign': 0,
   },
 };

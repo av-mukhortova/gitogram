@@ -10,7 +10,6 @@ export const getTrendings = (lang = 'javascript') => {
     addStartingZero(weekAgo.getMonth() + 1),
     addStartingZero(weekAgo.getDate()),
   ].join('-');
-
   params.append('order', 'desc');
   params.append('sort', 'stars');
   params.append('per_page', 10);

@@ -5,10 +5,7 @@ export default {
   components: { userStory },
   argTypes: {
     username: 'Andrew',
-    avatar: {
-      options: ['andrew.png', 'camille.png', 'can.png', 'diself.png', 'josh.png'],
-      control: { type: 'select' },
-    },
+    avatar: 'https://i.ibb.co/bvmSwqm/piter.png',
   },
 };
 
@@ -23,6 +20,6 @@ const Template = (args) => ({
 export const UserStory = Template.bind({});
 
 UserStory.args = {
-  avatar: 'andrew.png',
+  avatar: 'https://i.ibb.co/bvmSwqm/piter.png',
   username: 'Andrew',
 };

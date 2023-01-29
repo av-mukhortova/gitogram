@@ -1,0 +1,18 @@
+.wrapper {
+  background-color: black;
+  height: 100vh;
+}
+.x-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 200px;
+}
+.logo {
+  width: 174px;
+  color: white;
+}
+.close-icon {
+  width: 22.5px;
+  height: 22.5px;
+}

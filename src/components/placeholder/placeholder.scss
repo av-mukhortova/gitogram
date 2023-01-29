@@ -1,0 +1,32 @@
+.c-placeholder {
+  &__img {
+    width: 332px;
+    height: 170px;
+    background-color: #DEDEDE;
+    margin: 0px 3px 4px;
+    border-radius: 4px;
+  }
+
+  &__paragraph {
+    margin-top: 20px;
+  }
+
+  &__item {
+    height: 14px;
+    margin-top: 8px;
+    background-color: #DEDEDE;
+    border-radius: 4px;
+  }
+
+  &__item:nth-child(1) {
+    width: 221px;
+  }
+
+  &__item:nth-child(2) {
+    width: 272px;
+  }
+
+  &__item:nth-child(3) {
+    width: 174px;
+  }
+}
