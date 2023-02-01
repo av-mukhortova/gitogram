@@ -67,8 +67,14 @@ export default {
     icon,
   },
   props: {
-    active: Boolean,
-    loading: Boolean,
+    active: {
+      type: Boolean,
+      default: false,
+    },
+    loading: {
+      type: Boolean,
+      default: false,
+    },
     btnsShown: {
       type: Array,
       default: () => ['next', 'prev'],

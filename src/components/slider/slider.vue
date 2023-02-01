@@ -12,7 +12,7 @@
             :data="getStoryData(trending)"
             :active="ndx === slideNdx"
             :btnsShown="activeBtns"
-            :loading="ndx === slideNdx && loading"
+            :loading="ndx === slideNdx && isLoading"
             @onNextSlide="handleSlide(ndx + 1)"
             @onPrevSlide="handleSlide(ndx - 1)"
             @onProgressFinish="handleSlide(ndx + 1)"
@@ -33,14 +33,15 @@ export default {
   props: {
     initialSlide: {
       type: Number,
+      default: 0,
     },
   },
   data() {
     return {
       slideNdx: null,
       sliderPosition: 0,
-      loading: false,
-      btnsShown: true,
+      isLoading: false,
+      isBtnsShown: true,
     };
   },
   computed: {
@@ -48,9 +49,15 @@ export default {
       trendings: (state) => state.trendings.data,
     }),
     activeBtns() {
-      if (!this.btnsShown) return [];
-      if (this.slideNdx === 0) return ['next'];
-      if (this.slideNdx === this.trendings.length - 1) return ['prev'];
+      if (!this.isBtnsShown) {
+        return [];
+      }
+      if (this.slideNdx === 0) {
+        return ['next'];
+      }
+      if (this.slideNdx === this.trendings.length - 1) {
+        return ['prev'];
+      }
       return ['next', 'prev'];
     },
   },
@@ -83,13 +90,15 @@ export default {
       slider.style.transform = `translateX(${this.sliderPosition}px)`;
     },
     async loadReadme() {
-      this.loading = true;
-      this.btnsShown = false;
+      this.isLoading = true;
+      this.isBtnsShown = false;
       try {
         await this.fetchReadmeForActiveSlide();
+      } catch (e) {
+        throw e;
       } finally {
-        this.loading = false;
-        this.btnsShown = true;
+        this.isLoading = false;
+        this.isBtnsShown = true;
       }
     },
     async handleSlide(slideNdx) {
@@ -101,7 +110,7 @@ export default {
   },
   async mounted() {
     if (this.initialSlide) {
-      const ndx = this.trendings.findIndex((item) => item.id === +this.initialSlide);
+      const ndx = this.trendings.findIndex((item) => item.id === Number(this.initialSlide));
       await this.handleSlide(ndx);
     } else {
       await this.handleSlide(0);
