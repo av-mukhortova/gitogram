@@ -3,7 +3,7 @@
     <div class="c-slide__header">
       <x-progress :active="active" @onFinish="$emit('onProgressFinish')" />
       <div class="c-slide__owner">
-        <user :avatar="data.userAvatar" size="xs" :username="data.username" />
+        <user :avatar="data.userAvatar" size="xxs" :username="data.username" />
       </div>
     </div>
     <div class="c-slide__content">
@@ -21,7 +21,13 @@
     </div>
     <div class="c-slide__footer">
       <div class="c-slide__btn">
-        <x-button hover-text="Unfollow">Follow</x-button>
+        <x-button
+          :loading="data.following.loading"
+          :theme="data.following.status ? 'grey' : 'green'"
+          size="l"
+          @click="$emit(data.following.status ? 'onUnfollow' : 'onFollow', data.id)"
+          >{{ data.following.status ? 'Unfollow' : 'Follow' }}</x-button
+        >
       </div>
     </div>
     <template v-if="active">
@@ -57,7 +63,7 @@ import { icon } from '../../icons';
 
 export default {
   name: 'Slide',
-  emits: ['onPrevSlide', 'onNextSlide', 'onProgressFinish'],
+  emits: ['onPrevSlide', 'onNextSlide', 'onProgressFinish', 'onFollow', 'onUnfollow'],
   components: {
     xProgress,
     xButton,

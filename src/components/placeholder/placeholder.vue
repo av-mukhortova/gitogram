@@ -1,6 +1,6 @@
 <template>
   <div class="c-placeholder">
-    <div class="c-placeholder__img"></div>
+    <div v-if="image" class="c-placeholder__img"></div>
     <ul>
       <li class="c-placeholder__paragraph" v-for="n in paragraphs" :key="n">
           <div class="c-placeholder__item"></div>
@@ -18,6 +18,10 @@ export default {
     paragraphs: {
       type: Number,
       default: 2,
+    },
+    image: {
+      type: Boolean,
+      dafault: true,
     },
   },
 };

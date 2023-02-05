@@ -1,5 +1,4 @@
 .c-button {
-  width: 270px;
   height: 44px;
   border-radius: 5px;
   font-family: 'Open Sans', sans-serif;
@@ -10,24 +9,54 @@
   text-align: center;
   letter-spacing: -0.15px;
   color: #FFFFFF;
-}
 
-.c-button:hover {
-  background: #9E9E9E;
+  &.hover-text {
+    &:hover {
+      .btn-text {
+        font-size: 0;
+      }
 
-  .btn-text {
-    display: none;
+      &:after {
+        font-weight: bold;
+        font-size: 16px;
+        line-height: 22px;
+        color: #FFFFFF;
+      }
+    }
+
+    &:after {
+      content: attr(data-hover-text);
+      font-size: 0;
+    }
   }
-}
 
-.hover-text:hover::before {
-  content: attr(data-hover-text);
-}
+  &.size-s {
+    width: 200px;
+  }
 
-.theme-green {
-  background: #31AE54;
-}
+  &.size-m {
+    width: 252px;
+  }
 
-.theme-grey {
-  background: #9E9E9E;
+  &.size-l {
+    width: 270px;
+  }
+
+  &.theme-grey {
+    background: #9E9E9E;
+
+    &:hover {
+      background: #31AE54;
+      color: #fff;
+    }
+  }
+
+  &.theme-green {
+    background: #31AE54;
+    color: #fff;
+
+    &:hover {
+      background: #9E9E9E;
+    }
+  }
 }

@@ -8,17 +8,18 @@
       <slot name="feedContent"></slot>
     </div>
     <toggler @onToggle="toggle" />
-    <div class="comments" v-if="shown">
+    <div class="comments" v-if="shown && feed.issues.length > 0">
       <ul class="comments__list">
         <li
           class="comments__item"
-          v-for="comment in feed.comments"
-          :key="comment.id"
+          v-for="issue in feed.issues"
+          :key="issue.id"
         >
-          <comment :text="comment.content" :username="comment.username" />
+          <comment :text="issue.title" :username="issue.user.login" />
         </li>
       </ul>
     </div>
+    <placeholder v-else-if="loading" :paragraphs="1" :image="false"/>
   </div>
   <div class="feed__date">
     <span>{{ feed.date }}</span>
@@ -29,10 +30,17 @@
 import { toggler } from '../toggler';
 import { comment } from '../comment';
 import { avatar } from '../avatar';
+import { placeholder } from '../placeholder';
 
 export default {
   name: 'Feed',
-  components: { toggler, comment, avatar },
+  emits: ['onLoadIssues'],
+  components: {
+    toggler,
+    comment,
+    avatar,
+    placeholder,
+  },
   props: {
     feed: {
       type: Object,
@@ -43,11 +51,19 @@ export default {
   data() {
     return {
       shown: false,
+      loading: false,
     };
   },
   methods: {
     toggle(mode) {
       this.shown = mode.isOpen;
+      const issuesLength = this.feed.issues ? this.feed.issues.length : 0;
+      if (mode.isOpen && issuesLength === 0) {
+        this.loading = true;
+        this.$emit('onLoadIssues');
+      } else {
+        this.loading = false;
+      }
     },
   },
 };

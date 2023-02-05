@@ -7,3 +7,4 @@ export { default as star } from './star.vue';
 export { default as fork } from './fork.vue';
 export { default as close } from './close.vue';
 export { default as arrow } from './arrow.vue';
+export { default as git } from './git.vue';

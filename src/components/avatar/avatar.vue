@@ -19,9 +19,13 @@ export default {
   },
   setup(props) {
     const style = {
-      xs: {
+      xxs: {
         width: '32px',
         height: '32px',
+      },
+      xs: {
+        width: '37px',
+        height: '37px',
       },
       s: {
         width: '44px',
