@@ -1,0 +1,115 @@
+.logo {
+  width: 174px;
+  cursor: pointer;
+}
+
+.topline-headline {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 45px;
+  padding-bottom: 45px;
+}
+
+.placeholder {
+  width: 161px;
+  height: 18px;
+  margin-top: 10px;
+  background-color: #DEDEDE;
+  border-radius: 3px;
+}
+
+.content {
+  display: flex;
+}
+
+.left-side {
+  flex: 1;
+  padding-right: 30px;
+  border-right: 1px solid #D3D3D3;
+  padding-top: 40px;
+}
+
+.right-side {
+  flex: 2;
+  padding: 40px 0 0 70px;
+}
+
+.user-title {
+  margin-bottom: 30px;
+  font-weight: 700;
+  font-size: 26px;
+  line-height: 28px;
+}
+
+.user-login {
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 29px;
+}
+
+.user-links {
+  display: flex;
+  gap: 10px;
+  margin-top: 9px;
+}
+
+.link-desc {
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 15px;
+  margin-left: 4px;
+}
+
+.link-value {
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 21px;
+}
+
+.following-link {
+  color: #000000;
+  text-decoration: none;
+
+  .link-desc {
+    text-decoration: underline;
+    color: #31AE54;
+  }
+
+  &:hover {
+    .link-desc {
+      text-decoration: none;
+    }
+  }
+
+  &.router-link-active {
+    pointer-events: none;
+    .link-desc {
+      color: #000000;
+      text-decoration: none;
+    }
+  }
+}
+
+.repos-link {
+  color: #000000;
+  text-decoration: none;
+  
+  .link-desc {
+    text-decoration: underline;
+    color: #31AE54;
+  }
+
+  &:hover {
+    .link-desc {
+      text-decoration: none;
+    }
+  }
+
+  &.router-link-exact-active {
+    .link-desc {
+      color: #000000;
+      text-decoration: none;
+    }
+  }
+}

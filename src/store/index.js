@@ -4,6 +4,7 @@ import trendings from './modules/trendings';
 import user from './modules/user';
 import auth from './modules/auth';
 import starred from './modules/starred';
+import repos from './modules/repos';
 
 export default createStore({
   getters: {
@@ -19,5 +20,6 @@ export default createStore({
     user,
     auth,
     starred,
+    repos,
   },
 });

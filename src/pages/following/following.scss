@@ -1,0 +1,30 @@
+.loader {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.following-header {
+  margin-bottom: 36px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: bold;
+
+  .title {
+    font-size: 26px;
+  }
+
+  .count {
+    font-size: 18px;
+    color: #9E9E9E;
+  }
+}
+
+.following-item {
+  margin-bottom: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}

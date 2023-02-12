@@ -39,7 +39,7 @@ const Template = (args) => ({
     return { args };
   },
   template: `<slide
-              :data="{userAvatar: args.avatar, username: args.username, content: args.content}"
+              :data="{userAvatar: args.avatar, username: args.username, content: args.content, following: {loading: false, status: false}}"
               :active="args.active"
               :btnsShown="['next','prev']"
               :loading="args.loading"

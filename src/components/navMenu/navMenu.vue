@@ -7,7 +7,7 @@
       <avatar v-if="avatar" :avatar="avatar" size="xs"></avatar>
       <icon v-else class="profile" name="profile" />
     </button>
-    <button class="c-menu-logout" @click="$emit('onPressLogout')">
+    <button class="c-menu-logout" @click="logout">
       <icon class="logout" name="logout" />
     </button>
   </div>
@@ -19,12 +19,18 @@ import { avatar } from '../avatar';
 
 export default {
   name: 'NavMenu',
-  emits: ['onPressHome', 'onPressProfile', 'onPressLogout'],
+  emits: ['onPressHome', 'onPressProfile'],
   components: { icon, avatar },
   props: {
     avatar: {
       type: String,
       default: '',
+    },
+  },
+  methods: {
+    logout() {
+      localStorage.removeItem('token');
+      window.location.reload();
     },
   },
 };

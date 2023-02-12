@@ -7,19 +7,17 @@
     <div class="feed__content">
       <slot name="feedContent"></slot>
     </div>
-    <toggler @onToggle="toggle" />
+    <div class="toggler">
+      <toggler @onToggle="toggle" />
+    </div>
     <div class="comments" v-if="shown && feed.issues.length > 0">
       <ul class="comments__list">
-        <li
-          class="comments__item"
-          v-for="issue in feed.issues"
-          :key="issue.id"
-        >
+        <li class="comments__item" v-for="issue in feed.issues" :key="issue.id">
           <comment :text="issue.title" :username="issue.user.login" />
         </li>
       </ul>
     </div>
-    <placeholder v-else-if="loading" :paragraphs="1" :image="false"/>
+    <placeholder v-else-if="loading" :paragraphs="1" :image="false" />
   </div>
   <div class="feed__date">
     <span>{{ feed.date }}</span>
@@ -44,7 +42,6 @@ export default {
   props: {
     feed: {
       type: Object,
-      required: true,
       default: () => {},
     },
   },

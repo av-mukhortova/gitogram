@@ -2,6 +2,7 @@
   <div class="c-user">
     <avatar :avatar="avatar" :size="size" />
     <span>{{ username }}</span>
+    <slot></slot>
   </div>
 </template>
 
@@ -22,7 +23,7 @@ export default {
     },
     username: {
       type: String,
-      required: true,
+      default: '',
     },
   },
 };

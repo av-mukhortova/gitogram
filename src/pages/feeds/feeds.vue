@@ -9,8 +9,8 @@
           <div class="menu">
             <navMenu
               :avatar="user.avatar_url"
-              @onPressLogout="logout"
               @onPressHome="$router.push({ name: 'home' })"
+              @onPressProfile="$router.push({ name: 'repos' })"
             />
           </div>
         </div>
@@ -24,11 +24,7 @@
           >
             <userStory
               :avatar="feed.owner.avatar_url"
-              :username="
-                feed.owner.login.length > 18
-                  ? `${feed.owner.login.substring(1, 15)}...`
-                  : feed.owner.login
-              "
+              :username="cutUsername(feed.owner.login)"
               @onPress="
                 $router.push({
                   name: 'stories',
@@ -108,9 +104,8 @@ export default {
         date: new Date(item.created_at).toLocaleString('en-EN', { month: 'short', day: 'numeric' }),
       };
     },
-    logout() {
-      localStorage.removeItem('token');
-      window.location.reload();
+    cutUsername(name) {
+      return name.length > 18 ? `${name.substring(1, 15)}...` : name;
     },
   },
   async created() {
