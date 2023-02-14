@@ -20,7 +20,7 @@
 
 <script>
 import { useStore } from 'vuex';
-import { ref, computed, onMounted } from 'vue';
+import { computed } from 'vue';
 import { card } from '../../components/card';
 import { spinner } from '../../components/spinner';
 
@@ -28,19 +28,13 @@ export default {
   name: 'Repos',
   components: { card, spinner },
   setup() {
-    const isLoading = ref(false);
-    const { dispatch, state } = useStore();
-
-    onMounted(() => {
-      isLoading.value = true;
-      dispatch('repos/fetchRepos').then(() => {
-        isLoading.value = false;
-      });
-    });
+    const { state } = useStore();
+    const repos = computed(() => state.repos.data);
+    const isLoading = computed(() => state.repos.loading);
 
     return {
       isLoading,
-      repos: computed(() => state.repos.data),
+      repos,
     };
   },
 };

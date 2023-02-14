@@ -21,13 +21,13 @@
       <div class="content">
         <div class="left-side">
           <h2 class="user-title">My profile</h2>
-          <user :avatar="user.avatar_url" size="l">
+          <x-user :avatar="user.avatar_url" size="l">
             <div class="user-info">
               <span class="user-login">{{ user.login }}</span>
               <div v-if="!isLoading" class="user-links">
                 <div>
                   <router-link :to="{ name: 'repos' }" class="repos-link">
-                    <span class="link-value">{{ user.public_repos }}</span>
+                    <span class="link-value">{{ repos }}</span>
                     <span class="link-desc">repositories</span>
                   </router-link>
                 </div>
@@ -40,7 +40,7 @@
               </div>
               <div v-else class="placeholder"></div>
             </div>
-          </user>
+          </x-user>
         </div>
         <div class="right-side">
           <router-view></router-view>
@@ -56,7 +56,7 @@ import { ref, computed, onMounted } from 'vue';
 import { topline } from '../../components/topline';
 import { logo } from '../../components/logo';
 import { navMenu } from '../../components/navMenu';
-import { user } from '../../components/user';
+import { user as xUser } from '../../components/user';
 
 export default {
   name: 'ProfilePage',
@@ -64,22 +64,39 @@ export default {
     topline,
     logo,
     navMenu,
-    user,
+    xUser,
   },
   setup() {
     const { dispatch, state } = useStore();
     const isLoading = ref(false);
+    const isLoadingStarred = ref(false);
+    const isLoadingRepos = ref(false);
 
     onMounted(() => {
       isLoading.value = true;
       dispatch('user/getUser');
       dispatch('starred/fetchStarred').then(() => {
-        isLoading.value = false;
+        isLoadingStarred.value = false;
+        if (!isLoadingRepos.value) {
+          isLoading.value = false;
+        }
+      });
+      dispatch('repos/fetchRepos').then(() => {
+        isLoadingRepos.value = false;
+        if (!isLoadingStarred.value) {
+          isLoading.value = false;
+        }
       });
     });
+
+    const user = computed(() => state.user.data);
+    const followings = computed(() => state.starred.data.length);
+    const repos = computed(() => state.repos.data.length);
+
     return {
-      user: computed(() => state.user.data),
-      followings: computed(() => state.starred.data.length),
+      user,
+      followings,
+      repos,
       isLoading,
     };
   },

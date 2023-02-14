@@ -16,7 +16,9 @@ export default {
   },
   methods: {
     emitOnFinish() {
-      if (this.active === true) this.$emit('onFinish');
+      if (this.active === true) {
+        this.$emit('onFinish');
+      }
     },
   },
   mounted() {

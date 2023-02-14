@@ -38,14 +38,20 @@ export default {
     const { dispatch, state } = useStore();
 
     const clickBtn = (item) => {
-      if (item.following) dispatch('starred/unstarRepo', item.id);
-      else dispatch('starred/starRepo', item.id);
+      if (item.following) {
+        dispatch('starred/unstarRepo', item.id);
+      } else {
+        dispatch('starred/starRepo', item.id);
+      }
     };
 
+    const starred = computed(() => state.starred.data);
+    const isLoading = computed(() => state.starred.loading);
+
     return {
-      starred: computed(() => state.starred.data),
+      starred,
       clickBtn,
-      isLoading: computed(() => state.starred.loading),
+      isLoading,
     };
   },
 };

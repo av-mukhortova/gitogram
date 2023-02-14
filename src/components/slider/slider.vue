@@ -4,7 +4,7 @@
       <ul class="stories" ref="slider">
         <li
           class="stories-item"
-          v-for="(trending, ndx) in trendings"
+          v-for="(trending, ndx) in getUnstarredOnly"
           :key="trending.id"
           ref="item"
         >
@@ -26,7 +26,7 @@
 </template>
 
 <script>
-import { mapState, mapActions } from 'vuex';
+import { mapState, mapActions, mapGetters } from 'vuex';
 import { slide } from '../slide';
 
 export default {
@@ -50,6 +50,7 @@ export default {
     ...mapState({
       trendings: (state) => state.trendings.data,
     }),
+    ...mapGetters(['getUnstarredOnly']),
     activeBtns() {
       if (!this.isBtnsShown) {
         return [];
